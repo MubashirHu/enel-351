@@ -1,42 +1,38 @@
 #include "C:\Users\hussa\Downloads\util.h"
-#include "C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\functions.h"
-#include "C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\GPIO.h"
+#include "functions.h"
+#include "GPIO.h"
+#include "ADC.h"
 
 int main(void)
 {
 	//init
 	clockInit();
-	led_IO_init();
-	switch_IO_Init();
 	led_GPIO_Init();
+	initializeADC();
+
 
 	//infinite loop
 	while(1)
 	{
+			
+		int sw_val = adc_Read();
 		
-		uint16_t state = read_DIP();
-		
-		
-		if (state == 1)
+		if(sw_val > 0x000 && sw_val <=0x3FF)
 		{
-			routine1();
-		}
-		else if( state == 2)
+			drive_LED_Binary(1);
+			
+		} else if(sw_val > 0x3FF && sw_val <= 0x7FF)
 		{
-			routine2();
+			drive_LED_Binary(2);
 		}
-		else if( state == 4)
+		else if(sw_val > 0x7FF && sw_val <= 0xBFF)
 		{
-			routine3();
-		}
-		else if( state == 8)
+			drive_LED_Binary(4);
+		}		
+		else if(sw_val > 0xBFF && sw_val <= 0xFFF)
 		{
-			routine4();
-		}
-		else{
-			//nothing
-		}
+			drive_LED_Binary(8);
+		}	
 		
 	}
-	
 }

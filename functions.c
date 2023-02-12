@@ -1,7 +1,7 @@
 #include"C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\functions.h"
 #include "stm32f10x.h"
+#include "functions.h"
 #include "C:\Users\hussa\Downloads\util.h"
-#include "C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\functions.h"
 
 //**************************** Utility ************************************************************
 // delay = 1800 is approximately 1 ms @ SYSCLK = 24 MHz (ymmv)

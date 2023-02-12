@@ -37,6 +37,11 @@ void led_GPIO_Init(void)
 	//Enable Port A and AFIO clocks
 			
     RCC->APB2ENR |=  RCC_APB2ENR_IOPAEN;
+	
+	// Configure PA5 as GPIO ( Write 0011b into the configuration and mode bits )
+    GPIOA->CRL |= GPIO_CRL_CNF5 | GPIO_CRL_MODE5;
+	
+		GPIOA->CRL &= 0xff3fffff;
 
 // Configure PA7 as GPIO ( Write 0011b into the configuration and mode bits )
     GPIOA->CRL |= GPIO_CRL_CNF7 | GPIO_CRL_MODE7;

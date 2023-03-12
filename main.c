@@ -4,38 +4,40 @@
 #include "ADC.h"
 #include "Interrupt.h"
 #include "PWM.h"
+#include "UART.h"
+
+char c;
 
 int main(void)
 {
 	//init
 	clockInit();
-	initializeADC();
-	tim3GpioSetup();
+	// Initialize USART1
+  init_UART1();
 	sysTickInit();
-
-
-	//infinite loop
-	while(1)
-	{
-		int sw_val = adc_Read();
-		
-		//between 0 and 0.825V
-		if(sw_val > 0x000 && sw_val <=0x3FF)
-		{
-			updateDutyCycle(40);
-			
-		} else if(sw_val > 0x3FF && sw_val <= 0x7FF) // between 0.825V and 1.65V
-		{
-			updateDutyCycle(50);
-		}
-		else if(sw_val > 0x7FF && sw_val <= 0xBFF) // between 1.65V and 2.475V
-		{
-			updateDutyCycle(70);
-		}		
-		else if(sw_val > 0xBFF && sw_val <= 0xFFF) // between 2.475 and 3.3V
-		{
-			updateDutyCycle(80);
-		}	
-		
-	}
+    
+    // Send 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!' characters
+    USART1_SendChar('H');
+    USART1_SendChar('e');
+    USART1_SendChar('l');
+    USART1_SendChar('l');
+    USART1_SendChar('o');
+    USART1_SendChar(' ');
+    USART1_SendChar('W');
+    USART1_SendChar('o');
+    USART1_SendChar('r');
+    USART1_SendChar('l');
+    USART1_SendChar('d');
+    USART1_SendChar('!');
+    
+    // Receive a character and echo it back
+    c = USART1_ReceiveChar();
+    USART1_SendChar(c);
+    
+    while (1)
+    {
+        // Your main code here
+		c = USART1_ReceiveChar();
+    USART1_SendChar(c);
+    }
 }

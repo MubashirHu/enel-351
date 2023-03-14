@@ -6,38 +6,33 @@
 #include "PWM.h"
 #include "UART.h"
 
-char c;
-
 int main(void)
 {
 	//init
 	clockInit();
-	// Initialize USART1
+	led_IO_init();
   init_UART1();
 	sysTickInit();
     
-    // Send 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!' characters
-    USART1_SendChar('H');
-    USART1_SendChar('e');
-    USART1_SendChar('l');
-    USART1_SendChar('l');
-    USART1_SendChar('o');
-    USART1_SendChar(' ');
-    USART1_SendChar('W');
-    USART1_SendChar('o');
-    USART1_SendChar('r');
-    USART1_SendChar('l');
-    USART1_SendChar('d');
-    USART1_SendChar('!');
-    
-    // Receive a character and echo it back
-    c = USART1_ReceiveChar();
-    USART1_SendChar(c);
-    
+	for(char counter = 0x21; counter <= 0x7e; counter = counter+1)
+		{
+			USART1_SendChar(counter);
+			delay(100000);
+		}
+			
     while (1)
     {
-        // Your main code here
-		c = USART1_ReceiveChar();
-    USART1_SendChar(c);
-    }
+			char received = USART1_ReceiveChar();
+			USART1_SendChar(received);
+			
+			if( received == '!')
+			{
+				LED_ON();
+			}
+			else if (received == '~')
+			{
+				LED_OFF();
+			}
+		}
 }
+

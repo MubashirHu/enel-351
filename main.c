@@ -1,6 +1,6 @@
-#include "C:\Users\hussa\Downloads\util.h"
-#include "C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\functions.h"
-#include "C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\GPIO.h"
+#include "util.h"
+#include "functions.h"
+#include "GPIO.h"
 
 int main(void)
 {

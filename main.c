@@ -1,4 +1,4 @@
-#include "C:\Users\hussa\Downloads\util.h"
+#include "util.h"
 #include "functions.h"
 #include "GPIO.h"
 #include "ADC.h"
@@ -27,11 +27,11 @@ int main(void)
 			
 			if( received == '!')
 			{
-				LED_ON();
+				led_flash();
 			}
 			else if (received == '~')
 			{
-				LED_OFF();
+				led_flash();
 			}
 		}
 }

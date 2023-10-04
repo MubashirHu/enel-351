@@ -21,13 +21,29 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.1.0.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\Lab2.uvprojx
-Project File Date:  03/11/2023
+C:\Users\hussa\Desktop\workspace\ENEL-351-Lab-\Lab2.uvprojx
+Project File Date:  10/03/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-".\Objects\Lab2.axf" - 0 Error(s), 0 Warning(s).
+main.c(1): warning: In file included from...
+./util.h(17): warning: no newline at end of file [-Wnewline-eof]
+ #define NUC_GREEN_OFF  0x00200000 
+                                   ^
+main.c(5): warning: In file included from...
+./Interrupt.h(6): warning: no newline at end of file [-Wnewline-eof]
+void EXTI_Init(void);
+                     ^
+main.c(7): warning: In file included from...
+./UART.h(7): warning: no newline at end of file [-Wnewline-eof]
+char USART1_ReceiveChar(void);
+                              ^
+3 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=1456 RO-data=252 RW-data=0 ZI-data=1632  
+".\Objects\Lab2.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -38,8 +54,8 @@ Package Vendor: ARM
    * Component: CORE Version: 5.6.0
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack
-                Keil.STM32F1xx_DFP.2.4.0
+                https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack
+                Keil.STM32F1xx_DFP.2.4.1
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
    * Component: Startup Version: 1.0.0
 
@@ -47,18 +63,18 @@ Package Vendor: Keil
   ./RTE/Device/STM32F103RB
   ./RTE/_Target_1
   C:/Users/hussa/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
-  C:/Users/hussa/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+  C:/Users/hussa/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Source file:   Device/Source/system_stm32f10x.c
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Include file:  RTE_Driver/Config/RTE_Device.h
-      Source file:   Device/Source/system_stm32f10x.c
-Build Time Elapsed:  00:00:00
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

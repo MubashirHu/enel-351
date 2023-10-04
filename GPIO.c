@@ -1,4 +1,4 @@
-#include "C:\Users\hussa\OneDrive\Documents\Workspace\ENEL 351\Lab2\GPIO.h"
+#include "GPIO.h"
 #include "stm32f10x.h"
 void switch_IO_Init(void)
 {

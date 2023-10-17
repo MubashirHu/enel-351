@@ -13,6 +13,7 @@ int main()
 	SysTick_Init(0xB71B00);
 	init_interrupt();
 	A_set_low(1);
+	
 	while(1)
 	{
 		if((GPIOA->IDR & GPIO_IDR_IDR1) != 0)

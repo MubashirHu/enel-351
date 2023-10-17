@@ -1,38 +1,36 @@
 #include "util.h"
-#include "functions.h"
-#include "GPIO.h"
-#include "ADC.h"
-
-int main(void)
+#include "stm32f10x.h"
+#include "clock.h"
+#include "pin.h"
+#include "adc.h"
+#include "systick.h"
+#include "interrupt.h"
+int main()
 {
-	//init
 	clockInit();
-	led_GPIO_Init();
-	initializeADC();
-
-
-	//infinite loop
+	enable_port('A');
+	led_IO_init();
+	SysTick_Init(0xB71B00);
+	init_interrupt();
+	A_set_low(1);
 	while(1)
 	{
-			
-		int sw_val = adc_Read();
-		
-		if(sw_val > 0x000 && sw_val <=0x3FF)
+		if((GPIOA->IDR & GPIO_IDR_IDR1) != 0)
 		{
-			drive_LED_Binary(1);
-			
-		} else if(sw_val > 0x3FF && sw_val <= 0x7FF)
-		{
-			drive_LED_Binary(2);
+			delay(270000);
+			A_set_low(1);
 		}
-		else if(sw_val > 0x7FF && sw_val <= 0xBFF)
-		{
-			drive_LED_Binary(4);
-		}		
-		else if(sw_val > 0xBFF && sw_val <= 0xFFF)
-		{
-			drive_LED_Binary(8);
-		}	
-		
 	}
+}
+
+void SysTick_Handler(void)
+{
+	GPIOA->ODR ^= GPIO_ODR_ODR5;
+}
+
+void EXTI0_IRQHandler(void)
+{
+	EXTI->PR |= EXTI_PR_PR0;
+	A_set_high(1);
+	
 }

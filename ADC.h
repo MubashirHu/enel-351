@@ -1,6 +1,4 @@
-#include <stdint.h>
+#include "stm32f10x.h"
 
-//function prototypes
-
-void initializeADC(void);
-uint16_t adc_Read(void);
+void adc_init(void);
+int adc_read(int channel_num);

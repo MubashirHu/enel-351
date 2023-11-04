@@ -8,5 +8,3 @@ void routine1(void);
 void routine2(void);
 void routine3(void);
 void routine4(void);
-
-// registers MASKS

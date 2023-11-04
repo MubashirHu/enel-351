@@ -1,4 +1,4 @@
-#include "ADC.h"
+#include "../headers/ADC.h"
 #include "stm32f10x.h"
 
 void initializeADC(void)

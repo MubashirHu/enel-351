@@ -1,4 +1,4 @@
-./objects/gpio.o: GPIO.c GPIO.h \
+./objects/gpio.o: src\GPIO.c src\..\headers\GPIO.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   C:\Users\hussa\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h \
   RTE\_Target_1\RTE_Components.h \

@@ -1,20 +1,16 @@
-#include "util.h"
-#include "functions.h"
-#include "GPIO.h"
-#include "ADC.h"
+#include "../headers/util.h"
+#include "../headers/functions.h"
+#include "../headers/GPIO.h"
+#include "../headers/ADC.h"
 
 int main(void)
 {
-	//init
 	clockInit();
 	led_GPIO_Init();
 	initializeADC();
 
-
-	//infinite loop
 	while(1)
 	{
-			
 		int sw_val = adc_Read();
 		
 		if(sw_val > 0x000 && sw_val <=0x3FF)
@@ -33,6 +29,5 @@ int main(void)
 		{
 			drive_LED_Binary(8);
 		}	
-		
 	}
 }
